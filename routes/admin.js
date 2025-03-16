@@ -1,6 +1,5 @@
 import express from 'express';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { getPath } from '../util/path.js';
 
 const router = express.Router();
