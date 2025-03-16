@@ -4,6 +4,8 @@ import { getPath } from '../util/path.js';
 
 const router = express.Router();
 
+export const products = [];
+
 router.get('/add-product', (req, res, next) => {
   const __dirname = getPath();
 
@@ -12,6 +14,7 @@ router.get('/add-product', (req, res, next) => {
 
 router.post('/add-product', (req, res, next) => {
   console.log(req.body);
+  products.push({ title: req.body.title });
   res.redirect('/');
 });
 
