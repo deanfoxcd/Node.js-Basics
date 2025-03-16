@@ -4,6 +4,7 @@ import adminRoutes from './routes/admin.js';
 import shopRoutes from './routes/shop.js';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { getPath } from './util/path.js';
 
 const app = express();
 
@@ -14,10 +15,7 @@ app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
-  const __filename = fileURLToPath(import.meta.url);
-  console.log(__filename);
-  const __dirname = path.dirname(__filename);
-  console.log(__dirname);
+  const __dirname = getPath();
 
   res
     .status(404)
