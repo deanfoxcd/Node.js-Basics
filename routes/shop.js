@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
   // const __dirname = getPath();
 
   // res.sendFile(path.join(__dirname, '..', 'views', 'shop.html'));
-  res.render('shop', { prods: products, docTitle: 'Shop' });
+  res.render('shop', { prods: products, docTitle: 'Shop', path: '/' });
 });
 
 export default router;

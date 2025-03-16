@@ -11,7 +11,10 @@ router.get('/add-product', (req, res, next) => {
 
   // res.sendFile(path.join(__dirname, '..', 'views', 'add-product.html'));
 
-  res.render('add-product', { prods: products, docTitle: 'Add Products' });
+  res.render('add-product', {
+    docTitle: 'Add Products',
+    path: '/admin/add-product.js',
+  });
 });
 
 router.post('/add-product', (req, res, next) => {

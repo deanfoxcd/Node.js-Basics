@@ -23,7 +23,9 @@ app.use((req, res, next) => {
   //   .status(404)
   //   .sendFile(path.join(__dirname, '..', 'views', 'page-not-found.html'));
 
-  res.status(404).render('page-not-found');
+  res
+    .status(404)
+    .render('page-not-found', { docTitle: '404 - Page Not Found' });
 });
 
 app.listen(3000);
