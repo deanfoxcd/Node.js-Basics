@@ -1,26 +1,12 @@
+// MODEL
+
 import express from 'express';
-import path from 'node:path';
-import { getPath } from '../util/path.js';
+import { getAddProduct, postAddProduct } from '../controllers/products.js';
 
 const router = express.Router();
 
-export const products = [];
+router.get('/add-product', getAddProduct);
 
-router.get('/add-product', (req, res, next) => {
-  // const __dirname = getPath();
-
-  // res.sendFile(path.join(__dirname, '..', 'views', 'add-product.html'));
-
-  res.render('add-product', {
-    docTitle: 'Add Products',
-    path: '/admin/add-product.js',
-  });
-});
-
-router.post('/add-product', (req, res, next) => {
-  console.log(req.body);
-  products.push({ title: req.body.title });
-  res.redirect('/');
-});
+router.post('/add-product', postAddProduct);
 
 export default router;

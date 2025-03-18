@@ -1,7 +1,7 @@
 import bodyParser from 'body-parser';
 import express from 'express';
 import path from 'node:path';
-import adminRoutes, { products } from './routes/admin.js';
+import adminRoutes from './routes/admin.js';
 import shopRoutes from './routes/shop.js';
 import { getPath } from './util/path.js';
 
