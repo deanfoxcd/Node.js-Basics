@@ -24,7 +24,7 @@ export function getProducts(req, res, next) {
   // const __dirname = getPath();
   // res.sendFile(path.join(__dirname, '..', 'views', 'shop.html'));
 
-  const products = Product.fetchAll();
-
-  res.render('shop', { prods: products, docTitle: 'Shop', path: '/' });
+  Product.fetchAll((products) => {
+    res.render('shop', { prods: products, docTitle: 'Shop', path: '/' });
+  });
 }
