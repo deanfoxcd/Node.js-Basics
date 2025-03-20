@@ -5,25 +5,28 @@ import { fileURLToPath } from 'node:url';
 
 const products = [];
 
+const getProductsFromFile = (cb) => {
+  const p = path.join(getPath(), '../data', 'products.json');
+
+  fs.readFile(p, (e, data) => {
+    if (e) {
+      cb([]);
+    } else {
+      cb(JSON.parse(data));
+    }
+  });
+};
+
 export class Product {
   constructor(t) {
     this.title = t;
   }
 
   save() {
-    // console.log('getPath:', getPath());
-    const p = path.join(getPath(), '../data', 'products.json');
-    // console.log('p:', p);
-    // console.log('dirname:', path.dirname(fileURLToPath(import.meta.url)));
-
-    fs.readFile(p, (e, data) => {
-      let products = [];
-
-      if (!e) {
-        products = JSON.parse(data);
-        console.log(products);
-      }
+    getProductsFromFile((products) => {
       products.push(this);
+      const p = path.join(getPath(), '../data', 'products.json');
+
       fs.writeFile(p, JSON.stringify(products), (e) => {
         console.log(e);
       });
@@ -31,13 +34,6 @@ export class Product {
   }
 
   static fetchAll(cb) {
-    const p = path.join(getPath(), '../data', 'products.json');
-
-    fs.readFile(p, async (e, data) => {
-      if (e) {
-        cb([]);
-      }
-      cb(JSON.parse(data));
-    });
+    getProductsFromFile(cb);
   }
 }
