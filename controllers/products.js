@@ -1,6 +1,6 @@
 // CONTROLLER
 
-const products = [];
+import { Product } from '../models/product.js';
 
 export function getAddProduct(req, res, next) {
   // const __dirname = getPath();
@@ -13,8 +13,9 @@ export function getAddProduct(req, res, next) {
 }
 
 export function postAddProduct(req, res, next) {
+  const product = new Product(req.body.title);
+  product.save();
   // console.log(req.body);
-  products.push({ title: req.body.title });
   res.redirect('/');
 }
 
@@ -22,6 +23,8 @@ export function getProducts(req, res, next) {
   // console.log(products);
   // const __dirname = getPath();
   // res.sendFile(path.join(__dirname, '..', 'views', 'shop.html'));
+
+  const products = Product.fetchAll();
 
   res.render('shop', { prods: products, docTitle: 'Shop', path: '/' });
 }
