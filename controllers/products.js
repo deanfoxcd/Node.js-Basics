@@ -6,7 +6,7 @@ export function getAddProduct(req, res, next) {
   // const __dirname = getPath();
   // res.sendFile(path.join(__dirname, '..', 'views', 'add-product.html'));
 
-  res.render('add-product', {
+  res.render('admin/add-product', {
     docTitle: 'Add Products',
     path: '/admin/add-product.js',
   });
@@ -25,6 +25,10 @@ export function getProducts(req, res, next) {
   // res.sendFile(path.join(__dirname, '..', 'views', 'shop.html'));
 
   Product.fetchAll((products) => {
-    res.render('shop', { prods: products, docTitle: 'Shop', path: '/' });
+    res.render('shop/product-list', {
+      prods: products,
+      docTitle: 'Shop',
+      path: '/',
+    });
   });
 }

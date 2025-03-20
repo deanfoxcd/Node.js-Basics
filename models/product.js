@@ -1,7 +1,8 @@
+//MODEL
+
+import fs from 'fs';
 import path from 'node:path';
 import { getPath } from '../util/path.js';
-import fs from 'fs';
-import { fileURLToPath } from 'node:url';
 
 const products = [];
 
