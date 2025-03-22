@@ -19,8 +19,8 @@ const getProductsFromFile = (cb) => {
 };
 
 export class Product {
-  constructor(t) {
-    this.title = t;
+  constructor(title) {
+    this.title = title;
   }
 
   save() {
@@ -29,7 +29,7 @@ export class Product {
       const p = path.join(getPath(), '../data', 'products.json');
 
       fs.writeFile(p, JSON.stringify(products), (e) => {
-        console.log(e);
+        // console.log(e);
       });
     });
   }

@@ -1,3 +1,5 @@
+// CONTROLLER
+
 import { getPath } from '../util/path.js';
 
 export function pageNotFound(req, res, next) {
@@ -9,5 +11,8 @@ export function pageNotFound(req, res, next) {
 
   res
     .status(404)
-    .render('page-not-found', { docTitle: '404 - Page Not Found' });
+    .render('page-not-found', {
+      docTitle: '404 - Page Not Found',
+      path: '/page-not-found',
+    });
 }
