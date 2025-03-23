@@ -1,5 +1,6 @@
 // CONTROLLER
 
+import { Cart } from '../models/cart.js';
 import { Product } from '../models/product.js';
 
 export function getProducts(req, res, next) {
@@ -38,6 +39,15 @@ export function getCart(req, res, next) {
     path: '/cart',
   });
 }
+
+export function postCart(req, res, next) {
+  const productId = req.body.productId;
+  Product.findById(productId, (prod) => {
+    Cart.addProduct(productId, prod.price);
+  });
+  res.redirect('/cart');
+}
+
 export function getOrders(req, res, next) {
   res.render('shop/orders', {
     docTitle: 'Your Orders',
