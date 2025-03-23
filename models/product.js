@@ -27,6 +27,7 @@ export class Product {
   }
 
   save() {
+    this.id = Math.random().toString();
     getProductsFromFile((products) => {
       products.push(this);
       const p = path.join(getPath(), '../data', 'products.json');
