@@ -3,10 +3,9 @@ import {
   getCart,
   getCheckout,
   getIndex,
+  getOrders,
   getProducts,
 } from '../controllers/shop.js';
-// import { getPath } from '../util/path.js';
-// import { products } from './admin.js';
 
 const router = express.Router();
 
@@ -14,5 +13,6 @@ router.get('/', getIndex);
 router.get('/products', getProducts);
 router.get('/cart', getCart);
 router.get('/checkout', getCheckout);
+router.get('/orders', getOrders);
 
 export default router;

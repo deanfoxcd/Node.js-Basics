@@ -28,6 +28,12 @@ export function getCart(req, res, next) {
     path: '/cart',
   });
 }
+export function getOrders(req, res, next) {
+  res.render('shop/orders', {
+    docTitle: 'Your Orders',
+    path: '/orders',
+  });
+}
 
 export function getCheckout(req, res, next) {
   res.render('shop/cjeckout', {
